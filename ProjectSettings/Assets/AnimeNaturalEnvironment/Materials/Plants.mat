@@ -131,8 +131,8 @@ Material:
     - _Glossiness: 0
     - _GlossinessSource: 0
     - _GlossyReflections: 0
-    - _HeightGradient: 0.086
-    - _HeightStartGradient: 0.129
+    - _HeightGradient: 0
+    - _HeightStartGradient: 0
     - _IndirectLightMultiplier: 1
     - _IsFace: 0
     - _MainLightIgnoreCelShade: 0
