@@ -1890,7 +1890,7 @@ Transform:
   m_GameObject: {fileID: 701654150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 1.99, z: -3.61}
+  m_LocalPosition: {x: -1, y: 1.99, z: -3.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3474,12 +3474,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43ebe1244f07bf54eadf56c3c3ee7051, type: 3}
---- !u!1 &1275924828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7686650858420876781, guid: 43ebe1244f07bf54eadf56c3c3ee7051,
-    type: 3}
-  m_PrefabInstance: {fileID: 1275924827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1338873524
 GameObject:
   m_ObjectHideFlags: 0
@@ -9657,7 +9651,7 @@ PrefabInstance:
     - target: {fileID: 3016967120725028174, guid: 43ebe1244f07bf54eadf56c3c3ee7051,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.26
+      value: -5.24
       objectReference: {fileID: 0}
     - target: {fileID: 3016967120725028174, guid: 43ebe1244f07bf54eadf56c3c3ee7051,
         type: 3}
@@ -9992,7 +9986,7 @@ PrefabInstance:
     - target: {fileID: 3016967120725028174, guid: 43ebe1244f07bf54eadf56c3c3ee7051,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.82
+      value: -5.07
       objectReference: {fileID: 0}
     - target: {fileID: 3016967120725028174, guid: 43ebe1244f07bf54eadf56c3c3ee7051,
         type: 3}
@@ -10823,6 +10817,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5217616182280245083, guid: 2607ea2b582e1ab459cefbfb5d17380d,
         type: 3}
+      propertyPath: cubes.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217616182280245083, guid: 2607ea2b582e1ab459cefbfb5d17380d,
+        type: 3}
       propertyPath: cubes.Array.data[0]
       value: 
       objectReference: {fileID: 99133259}
@@ -10870,12 +10869,12 @@ PrefabInstance:
         type: 3}
       propertyPath: cubes.Array.data[9]
       value: 
-      objectReference: {fileID: 1275924828}
+      objectReference: {fileID: 454119508}
     - target: {fileID: 5217616182280245083, guid: 2607ea2b582e1ab459cefbfb5d17380d,
         type: 3}
       propertyPath: cubes.Array.data[10]
       value: 
-      objectReference: {fileID: 454119508}
+      objectReference: {fileID: 1984434391}
     - target: {fileID: 5217616182280245083, guid: 2607ea2b582e1ab459cefbfb5d17380d,
         type: 3}
       propertyPath: cubes.Array.data[11]
