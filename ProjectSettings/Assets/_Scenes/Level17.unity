@@ -4120,7 +4120,7 @@ PrefabInstance:
     - target: {fileID: 6706683356649647721, guid: c414307abf180614a9d4077a405a020c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Quitgame
+      value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 8423220255335639938, guid: c414307abf180614a9d4077a405a020c,
         type: 3}
