@@ -186,7 +186,7 @@ MonoBehaviour:
   playerVisual: {fileID: 0}
   moveSpeed: 300
   distance: 1.2
-  multiplicationFactor: 0.6
+  multiplicationFactor: 0.5
 --- !u!1 &2333866622163402428
 GameObject:
   m_ObjectHideFlags: 0
