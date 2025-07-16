@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
         {
             GameManager.Instance.GameOver();
         }
-        if(collision.gameObject.CompareTag("Lava"))
+        if (collision.gameObject.CompareTag("Lava"))
         {
             GameManager.Instance.GameOver();
         }
