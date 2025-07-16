@@ -34,7 +34,10 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
+        PlayerSwipe();
+    }
+    private void PlayerSwipe()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             //Debug.Log("Swipe");
@@ -64,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
             TryMove();
         }
     }
-
     public Vector3 GetDirection()
     {
         return direction;
