@@ -5123,11 +5123,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadNextScene
       objectReference: {fileID: 0}
-    - target: {fileID: 4610337087599133706, guid: c414307abf180614a9d4077a405a020c,
-        type: 3}
-      propertyPath: m_text
-      value: 'Level 7 '
-      objectReference: {fileID: 0}
     - target: {fileID: 5119757341914689763, guid: c414307abf180614a9d4077a405a020c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
