@@ -545,6 +545,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Player '
       objectReference: {fileID: 0}
+    - target: {fileID: 1777585223641715821, guid: d8e777090f48d024f8e0b572a8380073,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 531ed6a8d15a04f4aa3021b31583a9b6, type: 2}
     - target: {fileID: 5190090118691507465, guid: d8e777090f48d024f8e0b572a8380073,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16170,6 +16175,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 74569466710437532, guid: 0ce06eaec66c75246a3729e6e62f0b75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 236748533383216138, guid: 0ce06eaec66c75246a3729e6e62f0b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16220,10 +16230,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6742101989836265069, guid: 0ce06eaec66c75246a3729e6e62f0b75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8526840411543287563, guid: 0ce06eaec66c75246a3729e6e62f0b75,
         type: 3}
       propertyPath: m_Name
       value: Lights
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526840411543287563, guid: 0ce06eaec66c75246a3729e6e62f0b75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

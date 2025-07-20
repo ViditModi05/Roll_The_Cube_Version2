@@ -49,7 +49,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 151.54398, g: 89.32825, b: 19.300413, a: 0}
+    - _Color: {r: 151.54396, g: 67.73966, b: 19.8356, a: 0}
     - _DissolveTimeVector2: {r: -0.1, g: -0.5, b: 0, a: 0}
     - _DistortionTimeVector2: {r: 0, g: -0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
