@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -42,8 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -134,9 +131,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 282708724205699245, guid: 399d7aa4a5c92d74bb865d6a95e11691,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 531ed6a8d15a04f4aa3021b31583a9b6, type: 2}
+    - target: {fileID: 933039896245480520, guid: 399d7aa4a5c92d74bb865d6a95e11691,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.79
+      objectReference: {fileID: 0}
     - target: {fileID: 995901105711109637, guid: 399d7aa4a5c92d74bb865d6a95e11691,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -152,6 +154,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_16
       objectReference: {fileID: 0}
+    - target: {fileID: 1184862905275175560, guid: 399d7aa4a5c92d74bb865d6a95e11691,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2604628750466536430, guid: 399d7aa4a5c92d74bb865d6a95e11691,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -161,6 +168,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522807600698113020, guid: 399d7aa4a5c92d74bb865d6a95e11691,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152988349590205233, guid: 399d7aa4a5c92d74bb865d6a95e11691,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.41
       objectReference: {fileID: 0}
     - target: {fileID: 9141272443301752647, guid: 399d7aa4a5c92d74bb865d6a95e11691,
         type: 3}

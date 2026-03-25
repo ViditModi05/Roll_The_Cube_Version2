@@ -68,15 +68,15 @@ MonoBehaviour:
   m_text: Victory!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 30cf6e598cd6d5341bf8200469189ec5, type: 2}
-  m_sharedMaterial: {fileID: 7076336951610538918, guid: 30cf6e598cd6d5341bf8200469189ec5,
+  m_sharedMaterial: {fileID: -5055700094480874650, guid: 30cf6e598cd6d5341bf8200469189ec5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293196281
+  m_fontColor: {r: 0.97647065, g: 0.97647065, b: 0.8941177, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -104,20 +104,23 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -241,7 +244,7 @@ MonoBehaviour:
     m_Bits: 4294967295
 --- !u!95 &302685760228406781
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -255,6 +258,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -364,20 +368,23 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -407,6 +414,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Star (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073956879083297664, guid: be34fa5f08b90bb479a477f9ce46f183,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
@@ -491,7 +503,7 @@ PrefabInstance:
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 221
+      value: 224
       objectReference: {fileID: 0}
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
@@ -525,7 +537,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &4937627409369348128
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -539,6 +551,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -562,6 +575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Star (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073956879083297664, guid: be34fa5f08b90bb479a477f9ce46f183,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
@@ -641,7 +659,7 @@ PrefabInstance:
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 144
+      value: 147
       objectReference: {fileID: 0}
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
@@ -680,7 +698,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &105508928800852005
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -694,6 +712,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -925,13 +944,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6595427144797730677, guid: 609df33f874fed944ad163dc40305af4,
         type: 3}
+      propertyPath: m_margin.w
+      value: 21.16803
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595427144797730677, guid: 609df33f874fed944ad163dc40305af4,
+        type: 3}
       propertyPath: m_margin.x
       value: -6.931946
       objectReference: {fileID: 0}
     - target: {fileID: 6595427144797730677, guid: 609df33f874fed944ad163dc40305af4,
         type: 3}
       propertyPath: m_margin.z
-      value: -113.22339
+      value: -169.1471
       objectReference: {fileID: 0}
     - target: {fileID: 6653881902263093703, guid: 609df33f874fed944ad163dc40305af4,
         type: 3}
@@ -946,7 +970,7 @@ PrefabInstance:
     - target: {fileID: 8457562651722342322, guid: 609df33f874fed944ad163dc40305af4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -987,6 +1011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Star
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073956879083297664, guid: be34fa5f08b90bb479a477f9ce46f183,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
@@ -1066,12 +1095,12 @@ PrefabInstance:
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -142
+      value: -145
       objectReference: {fileID: 0}
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 156
+      value: 159
       objectReference: {fileID: 0}
     - target: {fileID: 4127071091016230872, guid: be34fa5f08b90bb479a477f9ce46f183,
         type: 3}
@@ -1111,7 +1140,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &3066513824747836399
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1125,6 +1154,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
