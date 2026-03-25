@@ -1,182 +1,164 @@
+﻿using UnityEngine;
+
 using System.Collections;
-using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    #region REFERENCES
+    public int speed = 300;
+    bool isMoving = false;
 
-    [Header("References")]
-    [SerializeField] private Transform playerVisual;
-    [SerializeField] private Transform blockCheck;
+    private Vector2 startTouchPosition;
+    private Vector2 endTouchPosition;
+    private float swipeThreshold = 50f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float rayDistance = 1.1f;
 
-    #endregion
-
-
-    #region SETTINGS
-
-    [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float multiplicationFactor = 0.5f;
-    [SerializeField] private float swipeThreshold = 50f;
-
-    #endregion
-
-
-    #region PRIVATE VARIABLES
-
-    private bool isMoving;
-    private bool movementPaused;
-
-    private Vector3 moveDirection;
-    private Vector2 swipeStart;
-
-    #endregion
-
-
-    #region UNITY METHODS
-
-    private void Update()
+    void Start()
     {
-        if (CanProcessInput())
+        SnapToGrid();
+    }
+
+    void SnapToGrid()
+    {
+        transform.position = new Vector3(
+            Mathf.Round(transform.position.x),
+            Mathf.Round(transform.position.y),
+            Mathf.Round(transform.position.z)
+        );
+    }
+    void Update()
+    {
+        if (isMoving || movementPaused) return;
+
+        // Touch Input (Mobile)
+        if (Input.touchCount > 0)
         {
-            DetectSwipe();
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == UnityEngine.TouchPhase.Began)
+            {
+                startTouchPosition = touch.position;
+            }
+
+            if (touch.phase == UnityEngine.TouchPhase.Ended)
+            {
+                endTouchPosition = touch.position;
+                DetectSwipe();
+            }
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Spider") || collision.gameObject.CompareTag("Lava"))
-        {
-            GameManager.Instance.GameOver();
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-
-        Vector3 nextPosition = transform.position + moveDirection;
-        Vector3 rayOrigin = nextPosition + Vector3.up * 0.5f;
-
-        Gizmos.DrawLine(rayOrigin, rayOrigin + Vector3.down * 3f);
-    }
-
-    #endregion
-
-
-    #region INPUT
-
-    private void DetectSwipe()
-    {
+        // Optional: Mouse (for testing in editor)
         if (Input.GetMouseButtonDown(0))
         {
-            swipeStart = Input.mousePosition;
+            startTouchPosition = Input.mousePosition;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            Vector2 swipeEnd = Input.mousePosition;
-            Vector2 swipe = swipeEnd - swipeStart;
-
-            if (swipe.magnitude < swipeThreshold)
-                return;
-
-            moveDirection = GetSwipeDirection(swipe.normalized);
-
-            TryMove();
+            endTouchPosition = Input.mousePosition;
+            DetectSwipe();
         }
     }
 
-    private Vector3 GetSwipeDirection(Vector2 swipe)
+    void DetectSwipe()
     {
+        Vector2 swipe = endTouchPosition - startTouchPosition;
+
+        if (swipe.magnitude < swipeThreshold)
+            return;
+
+        swipe.Normalize();
+
+        // Horizontal swipe
         if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
         {
-            return swipe.x > 0 ? Vector3.right : Vector3.left;
+            if (swipe.x > 0)
+                TryMove(Vector3.right);
+            else
+                TryMove(Vector3.left);
+        }
+        // Vertical swipe
+        else
+        {
+            if (swipe.y > 0)
+                TryMove(Vector3.forward);
+            else
+                TryMove(Vector3.back);
+        }
+    }
+
+    void TryMove(Vector3 direction)
+    {
+        Vector3 checkPosition = transform.position + direction;
+
+        // Raycast downward from next position
+        if (Physics.Raycast(checkPosition + Vector3.up, Vector3.down, rayDistance, groundLayer))
+        {
+            // Ground exists → move
+            StartCoroutine(Roll(direction));
         }
         else
         {
-            return swipe.y > 0 ? Vector3.forward : Vector3.back;
+            // No ground → fall
+            StartCoroutine(Fall(direction));
         }
     }
 
-    #endregion
 
 
-    #region MOVEMENT
 
-    private void TryMove()
-    {
-        StartCoroutine(Roll());
-    }
-
-    private IEnumerator Roll()
+    IEnumerator Roll(Vector3 direction)
     {
         isMoving = true;
 
-        GameManager.Instance.PlayeMovementAudio();
 
-        float remainingAngle = 90f;
 
-        Vector3 rotationCenter =
-            transform.position +
-            moveDirection * multiplicationFactor +
-            Vector3.down * multiplicationFactor;
+        float remainingAngle = 90;
+        Vector3 rotationCenter = transform.position + (direction + Vector3.down) * 0.5f;
+        Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);
 
-        Vector3 rotationAxis = Vector3.Cross(Vector3.up, moveDirection);
-
-        while (remainingAngle > 0f)
+        while (remainingAngle > 0)
         {
-            float rotationStep = Mathf.Min(Time.deltaTime * moveSpeed, remainingAngle);
-
-            transform.RotateAround(rotationCenter, rotationAxis, rotationStep);
-
-            remainingAngle -= rotationStep;
-
+            float rotationAngle = Mathf.Min(Time.deltaTime * speed, remainingAngle);
+            transform.RotateAround(rotationCenter, rotationAxis, rotationAngle);
+            remainingAngle -= rotationAngle;
             yield return null;
         }
 
-        SnapToGrid();
+        isMoving = false;
+
+        transform.position = new Vector3(
+    Mathf.Round(transform.position.x),
+    Mathf.Round(transform.position.y),
+    Mathf.Round(transform.position.z)
+);
+
+    }
+
+
+    IEnumerator Fall(Vector3 direction)
+    {
+        isMoving = true;
+
+        // Small forward tilt before falling (optional polish)
+        yield return StartCoroutine(Roll(direction));
+
+        // Fall down
+        float fallSpeed = 5f;
+
+        while (transform.position.y > -10f) // limit to avoid infinite fall
+        {
+            transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
+            yield return null;
+        }
 
         isMoving = false;
+
     }
-
-    #endregion
-
-
-    #region HELPERS
-
-    private bool CanProcessInput()
-    {
-        return !(GameManager.Instance.levelCompleted || isMoving || movementPaused);
-    }
-
-    private void SnapToGrid()
-    {
-        transform.position = new Vector3(
-            Mathf.Round(transform.position.x * 1000f) / 1000f,
-            Mathf.Round(transform.position.y * 1000f) / 1000f,
-            Mathf.Round(transform.position.z * 1000f) / 1000f
-        );
-
-        transform.rotation = Quaternion.Euler(
-            Mathf.Round(transform.rotation.eulerAngles.x / 90f) * 90f,
-            Mathf.Round(transform.rotation.eulerAngles.y / 90f) * 90f,
-            Mathf.Round(transform.rotation.eulerAngles.z / 90f) * 90f
-        );
-    }
-
-    #endregion
-
-
-    #region PUBLIC METHODS
+    private bool movementPaused = false;
 
     public void IsMovementPaused(bool _enable)
     {
         movementPaused = _enable;
     }
-
-    
-
-    #endregion
 }
