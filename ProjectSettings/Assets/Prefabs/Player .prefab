@@ -186,14 +186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e77f94ed38a9b042a7f8c1e12dec64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 300
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  blockCheck: {fileID: 7056209686773685265}
-  playerVisual: {fileID: 0}
-  moveSpeed: 300
-  distance: 1.2
-  multiplicationFactor: 0.5
+  rayDistance: 2
 --- !u!1 &2333866622163402428
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7152969232897623335
 Transform:
   m_ObjectHideFlags: 0

@@ -161,4 +161,33 @@ public class PlayerMovement : MonoBehaviour
     {
         movementPaused = _enable;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Lava"))
+        {
+            HitLava();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Lava"))
+        {
+            HitLava();
+        }
+    }
+
+    private void HitLava()
+    {
+        Debug.Log("Player hit Lava!");
+
+        // Stop all movement immediately
+        StopAllCoroutines();
+        isMoving = false;
+        movementPaused = true;
+
+        // Trigger Game Over
+        GameManager.Instance.GameOver();
+    }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Spider : MonoBehaviour
 {
@@ -265,4 +265,37 @@ public class Spider : MonoBehaviour
     }
 
     #endregion
+    private void HitPlayer()
+    {
+        Debug.Log("Spider hit player!");
+
+        // Stop spider
+        canChase = false;
+        isDropping = false;
+        rb.linearVelocity = Vector3.zero;
+
+        // Stop player movement
+        if (player != null)
+        {
+            player.IsMovementPaused(true);
+        }
+
+        // 🔥 CALL GAME OVER
+        GameManager.Instance.GameOver();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            HitPlayer();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            HitPlayer();
+        }
+    }
 }
