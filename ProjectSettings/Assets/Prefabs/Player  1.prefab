@@ -166,6 +166,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rayDistance: 2
+  swipeDebugText: {fileID: 0}
+  highlightMaterial: {fileID: 2100000, guid: 77e4000412ad464408f8688af278de5b, type: 2}
 --- !u!54 &3881165227098190719
 Rigidbody:
   m_ObjectHideFlags: 0

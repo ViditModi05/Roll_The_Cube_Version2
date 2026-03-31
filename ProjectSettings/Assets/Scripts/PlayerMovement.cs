@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
     private float swipeThreshold = 50f;
+
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayDistance = 1.1f;
 
@@ -26,28 +26,29 @@ public class PlayerMovement : MonoBehaviour
             Mathf.Round(transform.position.z)
         );
     }
+
     void Update()
     {
         if (isMoving || movementPaused) return;
 
-        // Touch Input (Mobile)
+        // Touch Input
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == UnityEngine.TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began)
             {
                 startTouchPosition = touch.position;
             }
 
-            if (touch.phase == UnityEngine.TouchPhase.Ended)
+            if (touch.phase == TouchPhase.Ended)
             {
                 endTouchPosition = touch.position;
                 DetectSwipe();
             }
         }
 
-        // Optional: Mouse (for testing in editor)
+        // Mouse (Editor testing)
         if (Input.GetMouseButtonDown(0))
         {
             startTouchPosition = Input.mousePosition;
@@ -67,94 +68,114 @@ public class PlayerMovement : MonoBehaviour
         if (swipe.magnitude < swipeThreshold)
             return;
 
+        if (Camera.main == null)
+            return;
+
         swipe.Normalize();
 
-        // Horizontal swipe
-        if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
+        Vector3 camForward = Camera.main.transform.forward;
+        Vector3 camRight = Camera.main.transform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward.Normalize();
+        camRight.Normalize();
+
+        Vector3 moveDir = camForward * swipe.y + camRight * swipe.x;
+
+        Vector3 finalDir;
+
+        if (Mathf.Abs(moveDir.x) > Mathf.Abs(moveDir.z))
         {
-            if (swipe.x > 0)
-                TryMove(Vector3.right);
-            else
-                TryMove(Vector3.left);
+            finalDir = (moveDir.x > 0) ? Vector3.right : Vector3.left;
         }
-        // Vertical swipe
         else
         {
-            if (swipe.y > 0)
-                TryMove(Vector3.forward);
-            else
-                TryMove(Vector3.back);
+            finalDir = (moveDir.z > 0) ? Vector3.forward : Vector3.back;
         }
+
+        TryMove(finalDir);
     }
 
     void TryMove(Vector3 direction)
     {
-        Vector3 checkPosition = transform.position + direction;
+        Vector3 checkPosition = new Vector3(
+            Mathf.Round(transform.position.x + direction.x),
+            Mathf.Round(transform.position.y),
+            Mathf.Round(transform.position.z + direction.z)
+        );
 
-        // Raycast downward from next position
-        if (Physics.Raycast(checkPosition + Vector3.up, Vector3.down, rayDistance, groundLayer))
+        RaycastHit hit;
+
+        if (Physics.Raycast(checkPosition + Vector3.up, Vector3.down, out hit, rayDistance, groundLayer))
         {
-            // Ground exists → move
             StartCoroutine(Roll(direction));
         }
         else
         {
-            // No ground → fall
             StartCoroutine(Fall(direction));
         }
     }
-
-
-
 
     IEnumerator Roll(Vector3 direction)
     {
         isMoving = true;
 
+        float duration = 0.35f;
+        float elapsed = 0f;
 
+        Vector3 startPos = transform.position;
+        Quaternion startRot = transform.rotation;
 
-        float remainingAngle = 90;
-        Vector3 rotationCenter = transform.position + (direction + Vector3.down) * 0.5f;
+        Vector3 endPos = startPos + direction;
         Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);
+        Quaternion endRot = Quaternion.AngleAxis(90, rotationAxis) * startRot;
 
-        while (remainingAngle > 0)
+        while (elapsed < duration)
         {
-            float rotationAngle = Mathf.Min(Time.deltaTime * speed, remainingAngle);
-            transform.RotateAround(rotationCenter, rotationAxis, rotationAngle);
-            remainingAngle -= rotationAngle;
+            float t = elapsed / duration;
+            float easedT = Mathf.SmoothStep(0, 1, t);
+
+            transform.position = Vector3.Lerp(startPos, endPos, easedT);
+            transform.rotation = Quaternion.Slerp(startRot, endRot, easedT);
+
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
-        isMoving = false;
-
         transform.position = new Vector3(
-    Mathf.Round(transform.position.x),
-    Mathf.Round(transform.position.y),
-    Mathf.Round(transform.position.z)
-);
+            Mathf.Round(endPos.x),
+            Mathf.Round(endPos.y),
+            Mathf.Round(endPos.z)
+        );
 
+        transform.rotation = Quaternion.Euler(
+            Mathf.Round(transform.rotation.eulerAngles.x / 90) * 90,
+            Mathf.Round(transform.rotation.eulerAngles.y / 90) * 90,
+            Mathf.Round(transform.rotation.eulerAngles.z / 90) * 90
+        );
+
+        isMoving = false;
     }
-
 
     IEnumerator Fall(Vector3 direction)
     {
         isMoving = true;
 
-        // Small forward tilt before falling (optional polish)
         yield return StartCoroutine(Roll(direction));
 
-        // Fall down
         float fallSpeed = 5f;
 
-        while (transform.position.y > -10f) // limit to avoid infinite fall
+        while (transform.position.y > -10f)
         {
             transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
             yield return null;
         }
 
         isMoving = false;
-
     }
+
     private bool movementPaused = false;
 
     public void IsMovementPaused(bool _enable)
@@ -182,12 +203,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Player hit Lava!");
 
-        // Stop all movement immediately
         StopAllCoroutines();
         isMoving = false;
         movementPaused = true;
 
-        // Trigger Game Over
         GameManager.Instance.GameOver();
     }
 }
