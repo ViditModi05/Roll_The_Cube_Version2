@@ -8887,12 +8887,12 @@ PrefabInstance:
     - target: {fileID: 8941462290747798550, guid: c2f1205859367cc418cbc9da7ec5c6cf,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8941462290747798550, guid: c2f1205859367cc418cbc9da7ec5c6cf,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8941462290747798550, guid: c2f1205859367cc418cbc9da7ec5c6cf,
         type: 3}
@@ -8932,12 +8932,12 @@ PrefabInstance:
     - target: {fileID: 8941462290747798550, guid: c2f1205859367cc418cbc9da7ec5c6cf,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -93
+      value: -109
       objectReference: {fileID: 0}
     - target: {fileID: 8941462290747798550, guid: c2f1205859367cc418cbc9da7ec5c6cf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 80
+      value: 974
       objectReference: {fileID: 0}
     - target: {fileID: 8941462290747798550, guid: c2f1205859367cc418cbc9da7ec5c6cf,
         type: 3}
@@ -9073,6 +9073,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3293800744372753458, guid: 2432b323c9d21b24eb949cd425e51354,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 825320608}
     - target: {fileID: 3884981309378041664, guid: 2432b323c9d21b24eb949cd425e51354,
         type: 3}
       propertyPath: m_Name
@@ -12310,7 +12315,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -12329,7 +12334,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
