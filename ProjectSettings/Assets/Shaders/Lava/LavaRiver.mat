@@ -73,6 +73,7 @@ Material:
     - _VoronoiAmount: 0.05
     - _VoronoiAngleoffset: 1.65
     - _VoronoiScale: 57.55
+    - _XRMotionVectorsPass: 1
     m_Colors:
     - _BottomRemap: {r: 0.69, g: 1.28, b: 0, a: 0}
     - _FresnelColor: {r: 3.7584903, g: 0.49194902, b: 0, a: 1}

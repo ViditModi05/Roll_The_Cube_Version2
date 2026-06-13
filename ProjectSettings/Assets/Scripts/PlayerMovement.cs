@@ -122,27 +122,36 @@ public class PlayerMovement : MonoBehaviour
     {
         isMoving = true;
 
-        float duration = 0.25f;
+        float duration = 0.30f;
         float elapsed = 0f;
 
-        Vector3 pivot = transform.position + (direction + Vector3.down) * 0.5f;
-        Vector3 axis = Vector3.Cross(Vector3.up, direction);
+        Vector3 startPos = transform.position;
+        Quaternion startRot = transform.rotation;
+
+        Vector3 endPos = startPos + direction;
+        Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);
+        Quaternion endRot = Quaternion.AngleAxis(90, rotationAxis) * startRot;
 
         while (elapsed < duration)
         {
-            float step = (90f / duration) * Time.deltaTime;
-
-            transform.RotateAround(pivot, axis, step);
-
             elapsed += Time.deltaTime;
+
+            float t = elapsed / duration;
+            t = Mathf.Clamp01(t);
+
+            // smoother than SmoothStep
+            float easedT = t * t * (3f - 2f * t);
+
+            transform.position = Vector3.LerpUnclamped(startPos, endPos, easedT);
+            transform.rotation = Quaternion.SlerpUnclamped(startRot, endRot, easedT);
+
             yield return null;
         }
 
-        // Snap to perfect grid after movement
         transform.position = new Vector3(
-            Mathf.Round(transform.position.x),
-            Mathf.Round(transform.position.y),
-            Mathf.Round(transform.position.z)
+            Mathf.Round(endPos.x),
+            Mathf.Round(endPos.y),
+            Mathf.Round(endPos.z)
         );
 
         transform.rotation = Quaternion.Euler(

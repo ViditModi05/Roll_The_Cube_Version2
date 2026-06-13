@@ -12358,6 +12358,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light Probe Group
       objectReference: {fileID: 0}
+    - target: {fileID: 5277797651695812261, guid: 233ee52aeb71d1949be7ac0b23d6a7db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

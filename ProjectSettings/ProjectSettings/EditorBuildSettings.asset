@@ -44,34 +44,35 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Level10 1.unity
     guid: df6bbc3d96e45b648a42df5e6cbcfdc5
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level11.unity
     guid: 49d1748853f5b8f47aaffe05e51608de
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level12.unity
     guid: 74ddadf5b60b21b4e8c673ea439af202
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level13.unity
     guid: 8de96095909a75a4b9430e4fa22a822a
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level14.unity
     guid: 915b1d6606f96534fb955dfdb41b73c9
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level15.unity
     guid: f187b54a989391f4398f51a9ad45c8a5
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level16.unity
     guid: 8b8694cb96caa0f43a3c1397e8f8cc45
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level17.unity
     guid: 8848dc6ca2611f240a4b4e7d89b8e51f
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level18.unity
     guid: 845724a6823455444a9f5853e3aaebe0
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level19.unity
     guid: e012d888306cc1345a9b278949df7de3
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Level20.unity
     guid: ed33f4835c7e8044fb29d384cec4fb6a
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
